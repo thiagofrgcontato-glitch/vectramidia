@@ -17,7 +17,8 @@
       "duration": "Reels",
       "quote": "A Vectra Media reestruturou toda a nossa abordagem de leads, desde o primeiro contato até o atendimento humanizado no WhatsApp.",
       "thumbnail": "./assets/images/real-3-entrevista-carros.jpg",
-      "videoUrl": "https://www.instagram.com/reels/Db3m3c7Rxhn/"
+      "videoUrl": "https://www.instagram.com/reels/Db3m3c7Rxhn/",
+      "mp4Url": "https://assets.mixkit.co/videos/preview/mixkit-man-holding-a-phone-and-smiling-41558-large.mp4"
     },
     {
       "id": "video-2",
@@ -28,7 +29,8 @@
       "duration": "Reels",
       "quote": "Gravação com iluminação profissional e roteiro validado direto na empresa do cliente.",
       "thumbnail": "./assets/images/real-5-gravacao.png",
-      "videoUrl": "https://www.instagram.com/reel/DXPT6wMERR3/?stkn=bzE1bTFkMzQydjA5"
+      "videoUrl": "https://www.instagram.com/reel/DXPT6wMERR3/?stkn=bzE1bTFkMzQydjA5",
+      "mp4Url": "https://assets.mixkit.co/videos/preview/mixkit-vertical-shot-of-a-woman-filming-a-vlog-42898-large.mp4"
     },
     {
       "id": "video-3",
@@ -39,7 +41,8 @@
       "duration": "Reels",
       "quote": "Reuniões presenciais de alinhamento com a diretoria para otimização da taxa de conversão.",
       "thumbnail": "./assets/images/real-4-reuniao.png",
-      "videoUrl": "https://www.instagram.com/reel/DYFdZgCR0QF/?stkn=MXhuM3gxY2dlY3U3eQ"
+      "videoUrl": "https://www.instagram.com/reel/DYFdZgCR0QF/?stkn=MXhuM3gxY2dlY3U3eQ",
+      "mp4Url": "https://assets.mixkit.co/videos/preview/mixkit-vertical-shot-of-a-man-working-on-a-laptop-42901-large.mp4"
     }
   ],
   "writtenTestimonials": [

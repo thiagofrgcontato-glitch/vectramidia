@@ -1,5 +1,5 @@
 /**
- * VECTRA MEDIA — JAVASCRIPT v5 (VISUAL REELS EMBED & HIGH PERFORMANCE)
+ * VECTRA MEDIA — JAVASCRIPT v7 (INSTANT 1-CLICK AUTOPLAY VIDEO PLAYER)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -253,36 +253,60 @@ function initMobileMenu() {
   });
 }
 
-/* MODAL DE VÍDEO COM EMBED DO INSTAGRAM REELS */
+/* MODAL DE VÍDEO — PLAY AUTOMÁTICO EM 1 CLIQUE SEM SEGUNDO CLIQUE */
 function initVideoModal() {
   const modal = document.getElementById('videoModal');
   const closeBtn = document.getElementById('videoModalClose');
   const frameHolder = document.getElementById('videoFrameHolder');
+  const modalIgLink = document.getElementById('modalIgLink');
   if (!modal || !frameHolder) return;
 
   document.addEventListener('click', e => {
-    const trigger = e.target.closest('[data-video-url]');
+    const trigger = e.target.closest('[data-video-url], [data-mp4-url]');
     if (!trigger) return;
-    const rawUrl = trigger.getAttribute('data-video-url');
-    if (!rawUrl) return;
+    const igUrl = trigger.getAttribute('data-video-url') || 'https://www.instagram.com/vectramidia';
+    const mp4Url = trigger.getAttribute('data-mp4-url');
 
-    // Se for URL do Instagram, gera o embed iframe seguro
-    let embedSrc = rawUrl;
-    if (rawUrl.includes('instagram.com')) {
-      // Extrai o código do reel/post (ex: Db3m3c7Rxhn ou DXPT6wMERR3)
-      const matches = rawUrl.match(/(?:reel|reels|p)\/([A-Za-z0-9_-]+)/);
-      if (matches && matches[1]) {
-        embedSrc = `https://www.instagram.com/p/${matches[1]}/embed/`;
-      }
-    } else if (!rawUrl.includes('autoplay')) {
-      embedSrc = rawUrl.includes('?') ? `${rawUrl}&autoplay=1` : `${rawUrl}?autoplay=1`;
+    if (modalIgLink) {
+      modalIgLink.setAttribute('href', igUrl);
     }
 
-    frameHolder.innerHTML = `<iframe src="${embedSrc}" title="Instagram Reel Player" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true" allowfullscreen></iframe>`;
-    modal.classList.add('open');
+    if (mp4Url) {
+      // Injeta o player HTML5 com autoplay e reprodução imediata
+      frameHolder.innerHTML = `
+        <video id="modalActiveVideo" controls autoplay playsinline style="width:100%; height:100%; max-height:600px; object-fit:contain; background:#000; border-radius:12px;">
+          <source src="${mp4Url}" type="video/mp4">
+          Seu navegador não suporta reprodução direta.
+        </video>
+      `;
+      modal.classList.add('open');
+
+      const activeVideo = document.getElementById('modalActiveVideo');
+      if (activeVideo) {
+        // Dispara o play imediatamente na mesma pilha de clique do usuário
+        const playPromise = activeVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Se o navegador exigir áudio mudo no primeiro frame
+            activeVideo.muted = true;
+            activeVideo.play();
+          });
+        }
+      }
+    } else if (igUrl.includes('instagram.com')) {
+      const matches = igUrl.match(/(?:reel|reels|p)\/([A-Za-z0-9_-]+)/);
+      const code = matches && matches[1] ? matches[1] : '';
+      const embedSrc = `https://www.instagram.com/p/${code}/embed/`;
+
+      frameHolder.innerHTML = `<iframe src="${embedSrc}" title="Instagram Reel Player" width="100%" height="600" frameborder="0" scrolling="no" allowtransparency="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+      modal.classList.add('open');
+    }
   });
 
-  const close = () => { modal.classList.remove('open'); frameHolder.innerHTML = ''; };
+  const close = () => {
+    modal.classList.remove('open');
+    frameHolder.innerHTML = '';
+  };
   if (closeBtn) closeBtn.addEventListener('click', close);
   modal.addEventListener('click', e => { if (e.target === modal) close(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
