@@ -61,7 +61,7 @@
           <li><a href="#sobre" class="nav-link">Sobre</a></li>
           <li><a href="#bastidores" class="nav-link">Bastidores</a></li>
           <li><a href="#servicos" class="nav-link">Serviços</a></li>
-          <li><a href="#depoimentos-video" class="nav-link">Depoimentos</a></li>
+          <li><a href="#depoimentos-video" class="nav-link">Vídeos</a></li>
           <li><a href="#contato" class="nav-link">Contato</a></li>
           <li style="margin-top:12px; width:100%;">
             <a href="#" class="btn btn-whatsapp btn-sm" data-wa="header" style="width:100%;">
@@ -345,18 +345,89 @@
   </section>
 
   <!-- ==============================================================
-       5. DEPOIMENTOS EM VÍDEO (INSTAGRAM REELS DA AGÊNCIA)
+       5. DEPOIMENTOS EM VÍDEO & INSTAGRAM REELS (COM CARDS VISUAIS HARDCODED)
        ============================================================== -->
   <section class="section video-section" id="depoimentos-video">
     <div class="container">
-      <div class="section-header" data-reveal>
+      <div class="section-header">
         <span class="section-tag">Depoimentos &amp; Cases em Vídeo</span>
         <h2 class="section-title">A Voz de Quem Confia na Vectra Media</h2>
         <p class="section-subtitle">Assista nossos vídeos e cases reais de sucesso no Instagram Reels.</p>
       </div>
 
-      <div id="featuredVideoHolder" data-reveal></div>
-      <div class="video-grid" id="videoGridHolder"></div>
+      <!-- CARD EM DESTAQUE HARDCODED PARA GARANTIR EXIBIÇÃO VISUAL IMEDIATA -->
+      <div id="featuredVideoHolder">
+        <div class="featured-video-card">
+          <div class="featured-video-thumb" data-video-url="https://www.instagram.com/reels/Db3m3c7Rxhn/" role="button" aria-label="Assistir Reels Consórcio Canopus">
+            <img src="./assets/images/real-3-entrevista-carros.jpg" alt="Entrevista no Cliente - Consórcio Canopus" loading="eager" width="400" height="711">
+            <div class="play-overlay-btn" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="featured-video-info">
+            <span class="featured-badge">⭐ Caso de Sucesso no Instagram</span>
+            <p class="featured-quote">"A Vectra Media reestruturou toda a nossa abordagem de leads, desde o primeiro contato até o atendimento humanizado no WhatsApp."</p>
+            <div class="client-author-name">Consórcio Canopus &amp; Parceiros</div>
+            <div class="client-author-comp">Setor Automotivo &amp; Consórcios · Vendas Locais</div>
+            <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+              <a href="https://www.instagram.com/reels/Db3m3c7Rxhn/" target="_blank" rel="noopener" class="btn btn-royal btn-sm" style="font-size:0.88rem;">
+                Ver no Instagram Reels ↗
+              </a>
+              <a href="#" class="btn btn-whatsapp btn-sm" data-wa="hero" style="font-size:0.88rem;">
+                Quero esses resultados
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRADE DE VÍDEOS REELS SECUNDÁRIOS HARDCODED -->
+      <div class="video-grid" id="videoGridHolder">
+        <div class="video-reels-card">
+          <div class="video-reels-thumb" data-video-url="https://www.instagram.com/reel/DXPT6wMERR3/?stkn=bzE1bTFkMzQydjA5" role="button" aria-label="Assistir Reels Gravação no Cliente">
+            <img src="./assets/images/real-5-gravacao.png" alt="Produção Audiovisual no Cliente" loading="eager" width="300" height="533">
+            <span class="video-duration-pill">Reels</span>
+            <div class="play-overlay-btn" style="width:52px;height:52px;" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="video-reels-caption">
+            <div class="video-client-title">Produção Audiovisual no Cliente</div>
+            <div class="video-client-desc">Gravação com iluminação e roteiro validado</div>
+            <a href="https://www.instagram.com/reel/DXPT6wMERR3/?stkn=bzE1bTFkMzQydjA5" target="_blank" rel="noopener" style="display:inline-block; margin-top:10px; font-size:0.82rem; color:#38BDF8; font-weight:700;">Abrir no Instagram ↗</a>
+          </div>
+        </div>
+
+        <div class="video-reels-card">
+          <div class="video-reels-thumb" data-video-url="https://www.instagram.com/reel/DYFdZgCR0QF/?stkn=MXhuM3gxY2dlY3U3eQ" role="button" aria-label="Assistir Reels Consultoria Comercial">
+            <img src="./assets/images/real-4-reuniao.png" alt="Consultoria de Vendas Presencial" loading="eager" width="300" height="533">
+            <span class="video-duration-pill">Reels</span>
+            <div class="play-overlay-btn" style="width:52px;height:52px;" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="video-reels-caption">
+            <div class="video-client-title">Alinhamento Estratégico Presencial</div>
+            <div class="video-client-desc">Reuniões presenciais de otimização de conversão</div>
+            <a href="https://www.instagram.com/reel/DYFdZgCR0QF/?stkn=MXhuM3gxY2dlY3U3eQ" target="_blank" rel="noopener" style="display:inline-block; margin-top:10px; font-size:0.82rem; color:#38BDF8; font-weight:700;">Abrir no Instagram ↗</a>
+          </div>
+        </div>
+
+        <div class="video-reels-card">
+          <div class="video-reels-thumb" data-video-url="https://www.instagram.com/reels/Db3m3c7Rxhn/" role="button" aria-label="Assistir Reels Atuação de Campo">
+            <img src="./assets/images/real-1-ponte.jpg" alt="Presença e Atuação de Campo" loading="eager" width="300" height="533">
+            <span class="video-duration-pill">Reels</span>
+            <div class="play-overlay-btn" style="width:52px;height:52px;" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="video-reels-caption">
+            <div class="video-client-title">Domínio de Mercado Regional</div>
+            <div class="video-client-desc">Captação geolocalizada para o seu público</div>
+            <a href="https://www.instagram.com/reels/Db3m3c7Rxhn/" target="_blank" rel="noopener" style="display:inline-block; margin-top:10px; font-size:0.82rem; color:#38BDF8; font-weight:700;">Abrir no Instagram ↗</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -365,15 +436,57 @@
        ============================================================== -->
   <section class="section written-section" id="depoimentos-escritos">
     <div class="container">
-      <div class="section-header" data-reveal>
+      <div class="section-header">
         <span class="section-tag">Avaliações de Clientes</span>
         <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
         <p class="section-subtitle">Avaliações autênticas de empresários que confiam na equipe Vectra Media.</p>
       </div>
 
-      <div class="testimonials-grid" id="writtenTestimonialsGrid" data-reveal></div>
+      <div class="testimonials-grid" id="writtenTestimonialsGrid">
+        <article class="testimonial-card card--active">
+          <div>
+            <div class="stars-row" aria-label="5 estrelas">★★★★★</div>
+            <p class="testimonial-text">"A Vectra alinhou o nosso atendimento e nos mostrou exatamente o valor do lead. As campanhas de tráfego pago trouxeram clientes reais prontos para fechar consórcio."</p>
+          </div>
+          <div class="client-profile">
+            <img class="client-avatar" src="./assets/images/real-4-reuniao.png" alt="Consórcio Canopus" loading="lazy" width="48" height="48">
+            <div>
+              <div class="client-name">Consórcio Canopus</div>
+              <div class="client-company">Setor Automotivo · Vendas Locais</div>
+            </div>
+          </div>
+        </article>
 
-      <div class="testimonials-cta-box" data-reveal>
+        <article class="testimonial-card">
+          <div>
+            <div class="stars-row" aria-label="5 estrelas">★★★★★</div>
+            <p class="testimonial-text">"A equipe veio até a nossa clínica com equipamentos de iluminação e áudio. Os vídeos gravados tiveram um engajamento gigante no Instagram e geraram consultas na mesma semana."</p>
+          </div>
+          <div class="client-profile">
+            <img class="client-avatar" src="./assets/images/real-5-gravacao.png" alt="Cliente de Produção" loading="lazy" width="48" height="48">
+            <div>
+              <div class="client-name">Cliente de Produção &amp; Anúncios</div>
+              <div class="client-company">Serviços Médicos &amp; Saúde</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div>
+            <div class="stars-row" aria-label="5 estrelas">★★★★★</div>
+            <p class="testimonial-text">"Atendimento totalmente humanizado, rápido e direto ao ponto. Paramos de gastar dinheiro à toa e começamos a ver o WhatsApp bombando diariamente."</p>
+          </div>
+          <div class="client-profile">
+            <img class="client-avatar" src="./assets/images/real-1-ponte.jpg" alt="Empresa Parceira" loading="lazy" width="48" height="48">
+            <div>
+              <div class="client-name">Empresa Parceira Local</div>
+              <div class="client-company">Comércio &amp; Serviços Regional</div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="testimonials-cta-box" style="margin-top:60px;">
         <h3>Quer ver esses mesmos resultados na sua empresa?</h3>
         <p style="color:#CBD5E1;">Converse com nossa equipe. Vamos analisar o seu negócio e traçar um plano sob medida.</p>
         <a href="#" class="btn btn-whatsapp btn-lg" data-wa="hero">
@@ -390,7 +503,7 @@
   <footer class="footer-section" id="contato">
     <div class="container">
 
-      <div class="footer-cta-banner" data-reveal>
+      <div class="footer-cta-banner">
         <h2 class="footer-cta-title">Pronto para transformar seu marketing em vendas reais?</h2>
         <p class="footer-cta-desc">Dê o próximo passo para o crescimento da sua empresa com a equipe certa ao seu lado.</p>
         <a href="#" class="btn btn-whatsapp btn-lg" data-wa="footer">
@@ -457,7 +570,7 @@
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
   </a>
 
-  <!-- MODALS -->
+  <!-- MODAL DE VÍDEO EMBED DO INSTAGRAM REELS -->
   <div class="video-modal-backdrop" id="videoModal" role="dialog" aria-modal="true">
     <div class="video-modal-container">
       <button class="video-modal-close" id="videoModalClose" aria-label="Fechar">&times;</button>

@@ -1,5 +1,5 @@
 /**
- * VECTRA MEDIA — JAVASCRIPT v3 (INTENSE BLUE AGENCY THEME)
+ * VECTRA MEDIA — JAVASCRIPT v5 (VISUAL REELS EMBED & HIGH PERFORMANCE)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initServicesCarouselDots();
   initWhatsAppLinks();
   initMobileMenu();
-  loadTestimonialsData();
   initVideoModal();
   initCookieBanner();
   initPrivacyModal();
@@ -61,7 +60,7 @@ function initScrollReveal() {
         }
       });
     },
-    { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+    { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
   );
 
   elements.forEach(el => observer.observe(el));
@@ -86,10 +85,6 @@ function initTypewriter() {
   let isDeleting = false;
   let isPaused = false;
 
-  const TYPING_SPEED = 70;
-  const DELETING_SPEED = 40;
-  const PAUSE_AFTER_WORD = 2000;
-
   function tick() {
     const currentPhrase = phrases[phraseIndex];
     if (isPaused) return;
@@ -103,10 +98,10 @@ function initTypewriter() {
           isPaused = false;
           isDeleting = true;
           tick();
-        }, PAUSE_AFTER_WORD);
+        }, 2000);
         return;
       }
-      setTimeout(tick, TYPING_SPEED);
+      setTimeout(tick, 70);
     } else {
       target.textContent = currentPhrase.slice(0, charIndex - 1);
       charIndex--;
@@ -120,11 +115,11 @@ function initTypewriter() {
         }, 300);
         return;
       }
-      setTimeout(tick, DELETING_SPEED);
+      setTimeout(tick, 40);
     }
   }
 
-  setTimeout(tick, 800);
+  setTimeout(tick, 600);
 }
 
 /* CONTADOR ANIMADO */
@@ -139,7 +134,7 @@ function initAnimatedCounters() {
         const el = entry.target;
         const target = parseInt(el.getAttribute('data-target') || '0', 10);
         const prefix = el.getAttribute('data-prefix') || '';
-        const duration = 1600;
+        const duration = 1500;
         const start = performance.now();
 
         function update(currentTime) {
@@ -158,7 +153,7 @@ function initAnimatedCounters() {
         observer.unobserve(el);
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.3 }
   );
 
   counters.forEach(el => observer.observe(el));
@@ -173,7 +168,6 @@ function initPersistentCardHover() {
       card.classList.add('card--active');
     });
   });
-  if (cards.length > 0) cards[0].classList.add('card--active');
 }
 
 /* CARROSSEL DOTS */
@@ -237,15 +231,6 @@ function initWhatsAppLinks() {
     btn.setAttribute('href', `https://wa.me/${number}?text=${encodeURIComponent(message)}`);
     btn.setAttribute('target', '_blank');
     btn.setAttribute('rel', 'noopener noreferrer');
-
-    btn.addEventListener('click', () => {
-      if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', { event_label: `WhatsApp - ${context}`, value: 1 });
-      }
-      if (typeof fbq === 'function') {
-        fbq('track', 'Contact', { content_name: `WhatsApp (${context})` });
-      }
-    });
   });
 }
 
@@ -268,92 +253,7 @@ function initMobileMenu() {
   });
 }
 
-/* CARREGAR DEPOIMENTOS */
-async function loadTestimonialsData() {
-  let data = null;
-  try {
-    const res = await fetch('./data/testimonials.json');
-    if (res.ok) data = await res.json();
-  } catch (_) {}
-
-  if (data) {
-    if (data.videoTestimonials) renderVideos(data.videoTestimonials);
-    if (data.writtenTestimonials) renderWrittenTestimonials(data.writtenTestimonials);
-  }
-  initPersistentCardHover();
-}
-
-function renderVideos(videos) {
-  if (!videos || !videos.length) return;
-
-  const featured = videos.find(v => v.featured) || videos[0];
-  const others = videos.filter(v => v !== featured);
-
-  const featuredEl = document.getElementById('featuredVideoHolder');
-  if (featuredEl && featured) {
-    featuredEl.innerHTML = `
-      <div class="featured-video-card" data-reveal>
-        <div class="featured-video-thumb" data-video-url="${featured.videoUrl}" role="button" aria-label="Assistir depoimento de ${featured.clientName}">
-          <img src="${featured.thumbnail}" alt="Depoimento de ${featured.clientName}" loading="lazy" width="400" height="711">
-          <div class="play-overlay-btn" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
-        <div class="featured-video-info">
-          <span class="featured-badge">⭐ Caso de Sucesso no Instagram</span>
-          <p class="featured-quote">"${featured.quote}"</p>
-          <div class="client-author-name">${featured.clientName}</div>
-          <div class="client-author-comp">${featured.company} · ${featured.segment}</div>
-          <div style="margin-top:24px;">
-            <a href="${featured.videoUrl}" target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm" style="font-size:0.88rem;">
-              Ver no Instagram Reels →
-            </a>
-          </div>
-        </div>
-      </div>`;
-    setTimeout(initWhatsAppLinks, 100);
-  }
-
-  const gridEl = document.getElementById('videoGridHolder');
-  if (gridEl && others.length) {
-    gridEl.innerHTML = others.map(v => `
-      <div class="video-reels-card" data-reveal>
-        <div class="video-reels-thumb" data-video-url="${v.videoUrl}" role="button" aria-label="Assistir depoimento de ${v.clientName}">
-          <img src="${v.thumbnail}" alt="${v.clientName}" loading="lazy" width="300" height="533">
-          <span class="video-duration-pill">${v.duration}</span>
-          <div class="play-overlay-btn" style="width:52px;height:52px;" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
-        <div class="video-reels-caption">
-          <div class="video-client-title">${v.clientName}</div>
-          <div class="video-client-desc">${v.company} · ${v.segment}</div>
-        </div>
-      </div>`).join('');
-  }
-}
-
-function renderWrittenTestimonials(testimonials) {
-  const container = document.getElementById('writtenTestimonialsGrid');
-  if (!container || !testimonials) return;
-
-  container.innerHTML = testimonials.map((item, i) => `
-    <article class="testimonial-card" data-reveal data-reveal-delay="${(i % 3) + 1}">
-      <div>
-        <div class="stars-row" aria-label="5 estrelas">${'★'.repeat(item.rating || 5)}</div>
-        <p class="testimonial-text">"${item.text}"</p>
-      </div>
-      <div class="client-profile">
-        <img class="client-avatar" src="${item.avatar}" alt="${item.name}" loading="lazy" width="48" height="48">
-        <div>
-          <div class="client-name">${item.name}</div>
-          <div class="client-company">${item.company} · ${item.segment}</div>
-        </div>
-      </div>
-    </article>`).join('');
-}
-
-/* VIDEO MODAL COM SUPORTE A INSTAGRAM REELS & YOUTUBE */
+/* MODAL DE VÍDEO COM EMBED DO INSTAGRAM REELS */
 function initVideoModal() {
   const modal = document.getElementById('videoModal');
   const closeBtn = document.getElementById('videoModalClose');
@@ -363,33 +263,39 @@ function initVideoModal() {
   document.addEventListener('click', e => {
     const trigger = e.target.closest('[data-video-url]');
     if (!trigger) return;
-    const url = trigger.getAttribute('data-video-url');
-    if (!url) return;
+    const rawUrl = trigger.getAttribute('data-video-url');
+    if (!rawUrl) return;
 
-    if (url.includes('instagram.com')) {
-      // Abre o Reel diretamente no Instagram se for link do IG
-      window.open(url, '_blank', 'noopener,noreferrer');
-      return;
+    // Se for URL do Instagram, gera o embed iframe seguro
+    let embedSrc = rawUrl;
+    if (rawUrl.includes('instagram.com')) {
+      // Extrai o código do reel/post (ex: Db3m3c7Rxhn ou DXPT6wMERR3)
+      const matches = rawUrl.match(/(?:reel|reels|p)\/([A-Za-z0-9_-]+)/);
+      if (matches && matches[1]) {
+        embedSrc = `https://www.instagram.com/p/${matches[1]}/embed/`;
+      }
+    } else if (!rawUrl.includes('autoplay')) {
+      embedSrc = rawUrl.includes('?') ? `${rawUrl}&autoplay=1` : `${rawUrl}?autoplay=1`;
     }
 
-    const autoUrl = url.includes('?') ? `${url}&autoplay=1` : `${url}?autoplay=1`;
-    frameHolder.innerHTML = `<iframe src="${autoUrl}" title="Depoimento" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    frameHolder.innerHTML = `<iframe src="${embedSrc}" title="Instagram Reel Player" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true" allowfullscreen></iframe>`;
     modal.classList.add('open');
   });
 
   const close = () => { modal.classList.remove('open'); frameHolder.innerHTML = ''; };
   if (closeBtn) closeBtn.addEventListener('click', close);
   modal.addEventListener('click', e => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
 }
 
-/* LGPD COOKIE BANNER */
+/* LGPD */
 function initCookieBanner() {
   const banner = document.getElementById('cookieBanner');
   const btn = document.getElementById('acceptCookiesBtn');
   if (!banner || !btn) return;
 
   if (!localStorage.getItem('vectra_cookie_consent')) {
-    setTimeout(() => banner.classList.remove('hidden'), 1200);
+    setTimeout(() => banner.classList.remove('hidden'), 1000);
   }
 
   btn.addEventListener('click', () => {
@@ -398,7 +304,7 @@ function initCookieBanner() {
   });
 }
 
-/* PRIVACY MODAL */
+/* PRIVACY */
 function initPrivacyModal() {
   const modal = document.getElementById('privacyModal');
   const closeBtn = document.getElementById('privacyModalClose');
