@@ -1,5 +1,5 @@
 /* ==========================================================================
-   VECTRA MEDIA v6 — AUTOPLAY VIDEO PLAYER & FIXED MODAL OVERLAY
+   VECTRA MEDIA v9 — FULL UNCROPPED IMAGES (IMAGENS INTEIRAS SEM CORTES)
    ========================================================================== */
 
 :root {
@@ -143,7 +143,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .marquee-item .dot { width: 6px; height: 6px; border-radius: 50%; background-color: var(--color-cyan-blue); }
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* SOBRE A AGÊNCIA — REAL PHOTOS & SHOWCASE */
+/* SOBRE A AGÊNCIA — REAL PHOTOS INTEIRAS */
 .about-section { background: linear-gradient(180deg, #051329 0%, #0B2A5B 100%); color: var(--color-white); }
 .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; }
 .about-text-col h2 { font-family: var(--font-headings); font-size: clamp(2rem, 3.5vw, 2.7rem); font-weight: 800; color: var(--color-white); line-height: 1.2; margin-bottom: 22px; }
@@ -152,24 +152,64 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .about-features li { display: flex; align-items: flex-start; gap: 16px; font-size: 1.02rem; color: #E2E8F0; }
 .feature-check { width: 24px; height: 24px; border-radius: 50%; background: rgba(30, 79, 216, 0.35); display: flex; align-items: center; justify-content: center; color: var(--color-cyan-blue); flex-shrink: 0; margin-top: 2px; border: 1px solid rgba(56, 189, 248, 0.4); font-weight: 800; }
 
-/* PAINEL DE FOTOS REAIS DA VECTRA MEDIA */
-.real-photos-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; position: relative; }
-.real-photo-card { position: relative; border-radius: var(--radius-md); overflow: hidden; border: 1px solid rgba(56, 189, 248, 0.25); box-shadow: var(--shadow-md); aspect-ratio: 4 / 5; background-color: #000; }
-.real-photo-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.real-photo-card:hover img { transform: scale(1.08); }
-.real-photo-badge { position: absolute; bottom: 12px; left: 12px; right: 12px; background: rgba(5, 19, 41, 0.88); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: var(--radius-sm); padding: 10px 14px; color: #FFF; }
-.real-photo-title { font-family: var(--font-headings); font-size: 0.82rem; font-weight: 700; color: var(--color-cyan-blue); line-height: 1.2; }
-.real-photo-sub { font-size: 0.74rem; color: #CBD5E1; margin-top: 2px; }
+/* PAINEL DE FOTOS REAIS — IMAGENS INTEIRAS SEM CORTAR NADINHA (object-fit: contain) */
+.real-photos-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; position: relative; }
+.real-photo-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  box-shadow: var(--shadow-md);
+  background: #020914;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.real-photo-card img {
+  width: 100%;
+  height: auto;
+  max-height: 380px;
+  object-fit: contain; /* Exibe a foto inteira sem cortar topo, pés ou lados! */
+  background: #020914;
+}
+
+.real-photo-badge {
+  background: rgba(5, 19, 41, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 12px 16px;
+  color: #FFF;
+}
+.real-photo-title { font-family: var(--font-headings); font-size: 0.85rem; font-weight: 700; color: var(--color-cyan-blue); line-height: 1.2; }
+.real-photo-sub { font-size: 0.76rem; color: #CBD5E1; margin-top: 2px; }
 
 @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 48px; } }
 
-/* GALERIA DE BASTIDORES & ATENDIMENTO REAL */
+/* GALERIA DE BASTIDORES & ATENDIMENTO REAL — IMAGENS INTEIRAS */
 .real-gallery-section { background: #051329; padding: 80px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
 .real-gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.real-gallery-item { background: rgba(11, 42, 91, 0.6); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md); transition: transform var(--transition-normal), border-color var(--transition-normal); }
+.real-gallery-item {
+  background: rgba(11, 42, 91, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-normal), border-color var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
 .real-gallery-item:hover { transform: translateY(-8px); border-color: var(--color-cyan-blue); box-shadow: var(--shadow-blue-glow); }
-.real-gallery-img { aspect-ratio: 16 / 10; width: 100%; object-fit: cover; }
-.real-gallery-caption { padding: 20px; }
+
+/* IMAGEM DA GALERIA INTEIRA (OBJECT-FIT: CONTAIN) */
+.real-gallery-img {
+  width: 100%;
+  height: 280px;
+  object-fit: contain; /* Mostra a imagem completa sem cortar rostos ou detalhes! */
+  background: #020914;
+  padding: 8px;
+}
+
+.real-gallery-caption { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
 .real-gallery-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--color-cyan-blue); letter-spacing: 1.5px; margin-bottom: 6px; }
 .real-gallery-title { font-family: var(--font-headings); font-size: 1.05rem; font-weight: 700; color: var(--color-white); margin-bottom: 6px; }
 .real-gallery-desc { font-size: 0.88rem; color: #94A3B8; line-height: 1.5; }
@@ -202,15 +242,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .service-action-link { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-headings); font-weight: 700; font-size: 0.95rem; color: var(--color-cyan-blue); }
 .service-action-link:hover { gap: 16px; color: var(--color-white); }
 
-/* VÍDEOS & INSTAGRAM REELS */
+/* VÍDEOS & INSTAGRAM REELS (IMAGENS DA CAPA INTEIRAS) */
 .video-section { background: linear-gradient(180deg, #051329 0%, #0B2A5B 100%); color: var(--color-white); }
 .featured-video-card {
   max-width: 960px; margin: 0 auto 52px auto; background: rgba(5, 19, 41, 0.85); border-radius: var(--radius-lg);
   border: 1px solid rgba(56, 189, 248, 0.3); overflow: hidden; display: grid; grid-template-columns: 1fr 1.1fr; box-shadow: var(--shadow-lg);
 }
-.featured-video-thumb { position: relative; aspect-ratio: 9 / 16; max-height: 500px; cursor: pointer; background-color: #000; }
-.featured-video-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.featured-video-thumb:hover img { transform: scale(1.06); }
+.featured-video-thumb { position: relative; min-height: 400px; cursor: pointer; background-color: #020914; }
+.featured-video-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 10px; transition: transform 0.5s ease; }
+.featured-video-thumb:hover img { transform: scale(1.05); }
 .play-overlay-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 68px; height: 68px; border-radius: 50%; background-color: var(--color-whatsapp); color: var(--color-white); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 35px rgba(37, 211, 102, 0.6); transition: transform var(--transition-fast); }
 .featured-video-thumb:hover .play-overlay-btn { transform: translate(-50%, -50%) scale(1.12); }
 .featured-video-info { padding: 48px; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
@@ -218,9 +258,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .video-reels-card { background: rgba(5, 19, 41, 0.85); border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.12); overflow: hidden; transition: transform var(--transition-normal); }
 .video-reels-card:hover { transform: translateY(-8px); border-color: var(--color-cyan-blue); box-shadow: var(--shadow-blue-glow); }
-.video-reels-thumb { position: relative; aspect-ratio: 9 / 16; cursor: pointer; background-color: #000; }
-.video-reels-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-.video-reels-thumb:hover img { transform: scale(1.06); }
+.video-reels-thumb { position: relative; height: 320px; cursor: pointer; background-color: #020914; }
+.video-reels-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 8px; transition: transform 0.4s ease; }
+.video-reels-thumb:hover img { transform: scale(1.05); }
 .video-duration-pill { position: absolute; top: 12px; right: 12px; background: rgba(11, 42, 91, 0.88); color: #FFF; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.15); }
 .video-reels-caption { padding: 20px; }
 
@@ -234,7 +274,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .stars-row { color: #F59E0B; margin-bottom: 16px; font-size: 1.15rem; }
 .testimonial-text { font-size: 0.96rem; color: #CBD5E1; line-height: 1.7; margin-bottom: 24px; font-style: italic; }
 .client-profile { display: flex; align-items: center; gap: 14px; }
-.client-avatar { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-cyan-blue); }
+.client-avatar { width: 52px; height: 52px; border-radius: 50%; object-fit: contain; background: #020914; border: 2px solid var(--color-cyan-blue); }
 .client-name { font-family: var(--font-headings); font-size: 0.98rem; font-weight: 700; color: var(--color-white); }
 .client-company { font-size: 0.82rem; color: #94A3B8; }
 
@@ -263,7 +303,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .floating-whatsapp:hover { transform: scale(1.1); }
 .floating-whatsapp svg { width: 34px; height: 34px; }
 
-/* MODAL DE VÍDEO — BOTÃO FECHAR FORA DO CONTAINER (SEM SOBREPOSIÇÃO) */
 .video-modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 9, 20, 0.95); backdrop-filter: blur(14px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
 .video-modal-backdrop.open { display: flex; }
 
@@ -273,7 +312,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   max-width: 440px;
   background-color: #051329;
   border-radius: var(--radius-md);
-  overflow: visible; /* Permite o X ficar de fora sem cortar */
+  overflow: visible;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95);
   border: 1px solid rgba(56, 189, 248, 0.4);
 }
