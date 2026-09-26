@@ -1,5 +1,5 @@
 /* ==========================================================================
-   VECTRA MEDIA v4 — REAL HUMANIZED AGENCY DESIGN WITH REAL PHOTOS
+   VECTRA MEDIA v6 — AUTOPLAY VIDEO PLAYER & FIXED MODAL OVERLAY
    ========================================================================== */
 
 :root {
@@ -153,130 +153,28 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .feature-check { width: 24px; height: 24px; border-radius: 50%; background: rgba(30, 79, 216, 0.35); display: flex; align-items: center; justify-content: center; color: var(--color-cyan-blue); flex-shrink: 0; margin-top: 2px; border: 1px solid rgba(56, 189, 248, 0.4); font-weight: 800; }
 
 /* PAINEL DE FOTOS REAIS DA VECTRA MEDIA */
-.real-photos-showcase {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  position: relative;
-}
+.real-photos-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; position: relative; }
+.real-photo-card { position: relative; border-radius: var(--radius-md); overflow: hidden; border: 1px solid rgba(56, 189, 248, 0.25); box-shadow: var(--shadow-md); aspect-ratio: 4 / 5; background-color: #000; }
+.real-photo-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.real-photo-card:hover img { transform: scale(1.08); }
+.real-photo-badge { position: absolute; bottom: 12px; left: 12px; right: 12px; background: rgba(5, 19, 41, 0.88); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: var(--radius-sm); padding: 10px 14px; color: #FFF; }
+.real-photo-title { font-family: var(--font-headings); font-size: 0.82rem; font-weight: 700; color: var(--color-cyan-blue); line-height: 1.2; }
+.real-photo-sub { font-size: 0.74rem; color: #CBD5E1; margin-top: 2px; }
 
-.real-photo-card {
-  position: relative;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  box-shadow: var(--shadow-md);
-  aspect-ratio: 4 / 5;
-  background-color: #000;
-}
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 48px; } }
 
-.real-photo-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
+/* GALERIA DE BASTIDORES & ATENDIMENTO REAL */
+.real-gallery-section { background: #051329; padding: 80px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+.real-gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.real-gallery-item { background: rgba(11, 42, 91, 0.6); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md); transition: transform var(--transition-normal), border-color var(--transition-normal); }
+.real-gallery-item:hover { transform: translateY(-8px); border-color: var(--color-cyan-blue); box-shadow: var(--shadow-blue-glow); }
+.real-gallery-img { aspect-ratio: 16 / 10; width: 100%; object-fit: cover; }
+.real-gallery-caption { padding: 20px; }
+.real-gallery-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--color-cyan-blue); letter-spacing: 1.5px; margin-bottom: 6px; }
+.real-gallery-title { font-family: var(--font-headings); font-size: 1.05rem; font-weight: 700; color: var(--color-white); margin-bottom: 6px; }
+.real-gallery-desc { font-size: 0.88rem; color: #94A3B8; line-height: 1.5; }
 
-.real-photo-card:hover img {
-  transform: scale(1.08);
-}
-
-.real-photo-badge {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  right: 12px;
-  background: rgba(5, 19, 41, 0.88);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  color: #FFF;
-}
-
-.real-photo-title {
-  font-family: var(--font-headings);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--color-cyan-blue);
-  line-height: 1.2;
-}
-
-.real-photo-sub {
-  font-size: 0.74rem;
-  color: #CBD5E1;
-  margin-top: 2px;
-}
-
-@media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr; gap: 48px; }
-}
-
-/* GALERIA DE BASTIDORES & ATENDIMENTO REAL (INSPIRADA EM MUMU / PERMANEO) */
-.real-gallery-section {
-  background: #051329;
-  padding: 80px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.real-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.real-gallery-item {
-  background: rgba(11, 42, 91, 0.6);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  transition: transform var(--transition-normal), border-color var(--transition-normal);
-}
-
-.real-gallery-item:hover {
-  transform: translateY(-8px);
-  border-color: var(--color-cyan-blue);
-  box-shadow: var(--shadow-blue-glow);
-}
-
-.real-gallery-img {
-  aspect-ratio: 16 / 10;
-  width: 100%;
-  object-fit: cover;
-}
-
-.real-gallery-caption {
-  padding: 20px;
-}
-
-.real-gallery-tag {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--color-cyan-blue);
-  letter-spacing: 1.5px;
-  margin-bottom: 6px;
-}
-
-.real-gallery-title {
-  font-family: var(--font-headings);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--color-white);
-  margin-bottom: 6px;
-}
-
-.real-gallery-desc {
-  font-size: 0.88rem;
-  color: #94A3B8;
-  line-height: 1.5;
-}
-
-@media (max-width: 900px) {
-  .real-gallery-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 900px) { .real-gallery-grid { grid-template-columns: 1fr; } }
 
 /* SERVIÇOS */
 .services-section { background: #051329; }
@@ -365,10 +263,60 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .floating-whatsapp:hover { transform: scale(1.1); }
 .floating-whatsapp svg { width: 34px; height: 34px; }
 
-.video-modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 9, 20, 0.94); backdrop-filter: blur(12px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
+/* MODAL DE VÍDEO — BOTÃO FECHAR FORA DO CONTAINER (SEM SOBREPOSIÇÃO) */
+.video-modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 9, 20, 0.95); backdrop-filter: blur(14px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
 .video-modal-backdrop.open { display: flex; }
-.video-modal-container { position: relative; width: 100%; max-width: 480px; background-color: #000; border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9); border: 1px solid rgba(56, 189, 248, 0.3); }
-.video-modal-close { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; z-index: 10; cursor: pointer; }
+
+.video-modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background-color: #051329;
+  border-radius: var(--radius-md);
+  overflow: visible; /* Permite o X ficar de fora sem cortar */
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.video-modal-close {
+  position: absolute;
+  top: -48px;
+  right: -8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-royal-blue);
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  z-index: 100;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--color-white);
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.video-modal-close:hover {
+  transform: scale(1.15) rotate(90deg);
+  background-color: #EF4444;
+}
+
+.video-frame-holder {
+  width: 100%;
+  min-height: 560px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #000;
+}
+
+.video-frame-holder iframe {
+  width: 100%;
+  height: 620px;
+  border: none;
+}
 
 .cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(11, 42, 91, 0.98); backdrop-filter: blur(12px); color: var(--color-white); padding: 20px 28px; z-index: 990; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(56, 189, 248, 0.3); }
 .cookie-banner.hidden { display: none; }
