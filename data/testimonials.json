@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "yearsInMarket": "+5",
+    "yearsLabel": "Anos de mercado gerando resultados",
+    "clientsCount": "+120",
+    "clientsLabel": "Empresas e negócios locais impulsionados",
+    "statesCount": "+18",
+    "statesLabel": "Estados atendidos em todo o Brasil"
+  },
+  "videoTestimonials": [
+    {
+      "id": "video-1",
+      "featured": true,
+      "clientName": "Dr. Marcelo Ramos",
+      "company": "Clínica Integrada OdontoLife",
+      "segment": "Odontologia & Saúde",
+      "duration": "0:58",
+      "quote": "Em menos de 60 dias com a Vectra Media, nossa agenda lotou e tivemos que abrir novos horários de atendimento.",
+      "thumbnail": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&auto=format&fit=crop&q=80",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    },
+    {
+      "id": "video-2",
+      "featured": false,
+      "clientName": "Carla Vasconcelos",
+      "company": "Ateliê & Moda Festa",
+      "segment": "Varejo de Moda",
+      "duration": "1:15",
+      "quote": "O WhatsApp não para de tocar com pessoas interessadas nos vestidos certos. O tráfego pago fez toda a diferença.",
+      "thumbnail": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    },
+    {
+      "id": "video-3",
+      "featured": false,
+      "clientName": "Renato Silveira",
+      "company": "Silveira Energia Solar",
+      "segment": "Serviços & Engenharia",
+      "duration": "1:02",
+      "quote": "Paramos de queimar dinheiro em anúncios sem retorno. A Vectra entregou leads qualificados que realmente fecham contrato.",
+      "thumbnail": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&auto=format&fit=crop&q=80",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    },
+    {
+      "id": "video-4",
+      "featured": false,
+      "clientName": "Dra. Juliana Prado",
+      "company": "Prado Dermatologia Estética",
+      "segment": "Saúde & Beleza",
+      "duration": "0:47",
+      "quote": "Profissionalismo impecável. A equipe cuida desde os criativos até os anúncios com extrema atenção.",
+      "thumbnail": "https://images.unsplash.com/photo-1594824813682-14352f2081d6?w=800&auto=format&fit=crop&q=80",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    }
+  ],
+  "writtenTestimonials": [
+    {
+      "name": "Eduardo Mendes",
+      "company": "Mendes Advocacia Empresarial",
+      "segment": "Direito",
+      "rating": 5,
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop&crop=faces&q=80",
+      "text": "A Vectra Media entendeu exatamente o tom sério e ético que nosso escritório precisava. Hoje recebemos contatos diários de empresas buscando consultoria preventiva."
+    },
+    {
+      "name": "Patrícia Albuquerque",
+      "company": "Harmonie Centro Estético",
+      "segment": "Estética Avançada",
+      "rating": 5,
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=160&h=160&fit=crop&crop=faces&q=80",
+      "text": "Antes da Vectra, fazíamos posts sem estratégia nenhuma. Com a gestão completa e os anúncios direcionados, triplicamos o número de procedimentos agendados no mês."
+    },
+    {
+      "name": "Rodrigo Fontes",
+      "company": "Prime Car Auto Center",
+      "segment": "Serviços Automotivos",
+      "rating": 5,
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&h=160&fit=crop&crop=faces&q=80",
+      "text": "Eles criaram uma campanha local no Google e no Meta Ads que colocou nossa oficina como referência na cidade. O investimento se pagou na primeira semana."
+    },
+    {
+      "name": "Fernanda Guimarães",
+      "company": "Boutique Le Petit",
+      "segment": "Moda Infantil",
+      "rating": 5,
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=160&h=160&fit=crop&crop=faces&q=80",
+      "text": "Atendimento rápido, transparência nos relatórios e suporte impecável. A Vectra não é apenas uma agência, é um braço de vendas do nosso negócio."
+    },
+    {
+      "name": "Guilherme Siqueira",
+      "company": "Siqueira & Associados Contabilidade",
+      "segment": "Contabilidade",
+      "rating": 5,
+      "avatar": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=160&h=160&fit=crop&crop=faces&q=80",
+      "text": "Excelente trabalho de reposicionamento de marca e captação de clientes B2B. A clareza nas reuniões mensais de alinhamento faz toda a diferença."
+    },
+    {
+      "name": "Larissa Morais",
+      "company": "Empório dos Sabores Gourmet",
+      "segment": "Gastronomia",
+      "rating": 5,
+      "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=160&h=160&fit=crop&crop=faces&q=80",
+      "text": "A qualidade dos vídeos e o tráfego geolocalizado trouxeram uma enxurrada de novos clientes para nossa loja física e delivery. Recomendo de olhos fechados!"
+    }
+  ]
+}
