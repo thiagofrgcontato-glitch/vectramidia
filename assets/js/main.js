@@ -1,5 +1,5 @@
 /**
- * VECTRA MEDIA — JAVASCRIPT v7 (INSTANT 1-CLICK AUTOPLAY VIDEO PLAYER)
+ * VECTRA MEDIA — JAVASCRIPT v8 (CLEAN INSTAGRAM REELS EMBED PLAYER)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -253,7 +253,7 @@ function initMobileMenu() {
   });
 }
 
-/* MODAL DE VÍDEO — PLAY AUTOMÁTICO EM 1 CLIQUE SEM SEGUNDO CLIQUE */
+/* MODAL DE VÍDEO — EMBED OFICIAL LIMPO DO INSTAGRAM REELS (SEM PRECISAR DE MP4 EXTERNO OU TELA PRETA) */
 function initVideoModal() {
   const modal = document.getElementById('videoModal');
   const closeBtn = document.getElementById('videoModalClose');
@@ -262,44 +262,27 @@ function initVideoModal() {
   if (!modal || !frameHolder) return;
 
   document.addEventListener('click', e => {
-    const trigger = e.target.closest('[data-video-url], [data-mp4-url]');
+    const trigger = e.target.closest('[data-video-url]');
     if (!trigger) return;
-    const igUrl = trigger.getAttribute('data-video-url') || 'https://www.instagram.com/vectramidia';
-    const mp4Url = trigger.getAttribute('data-mp4-url');
+    const igUrl = trigger.getAttribute('data-video-url');
+    if (!igUrl) return;
 
     if (modalIgLink) {
       modalIgLink.setAttribute('href', igUrl);
     }
 
-    if (mp4Url) {
-      // Injeta o player HTML5 com autoplay e reprodução imediata
+    // Extrai o código do Reel (Db3m3c7Rxhn, DXPT6wMERR3, DYFdZgCR0QF)
+    const matches = igUrl.match(/(?:reel|reels|p)\/([A-Za-z0-9_-]+)/);
+    const code = matches && matches[1] ? matches[1] : '';
+
+    if (code) {
+      const embedSrc = `https://www.instagram.com/p/${code}/embed/`;
       frameHolder.innerHTML = `
-        <video id="modalActiveVideo" controls autoplay playsinline style="width:100%; height:100%; max-height:600px; object-fit:contain; background:#000; border-radius:12px;">
-          <source src="${mp4Url}" type="video/mp4">
-          Seu navegador não suporta reprodução direta.
-        </video>
+        <iframe src="${embedSrc}" title="Instagram Reel Player" width="100%" height="600" frameborder="0" scrolling="no" allowtransparency="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen style="border:none; border-radius:12px; background:#FFF;"></iframe>
       `;
       modal.classList.add('open');
-
-      const activeVideo = document.getElementById('modalActiveVideo');
-      if (activeVideo) {
-        // Dispara o play imediatamente na mesma pilha de clique do usuário
-        const playPromise = activeVideo.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            // Se o navegador exigir áudio mudo no primeiro frame
-            activeVideo.muted = true;
-            activeVideo.play();
-          });
-        }
-      }
-    } else if (igUrl.includes('instagram.com')) {
-      const matches = igUrl.match(/(?:reel|reels|p)\/([A-Za-z0-9_-]+)/);
-      const code = matches && matches[1] ? matches[1] : '';
-      const embedSrc = `https://www.instagram.com/p/${code}/embed/`;
-
-      frameHolder.innerHTML = `<iframe src="${embedSrc}" title="Instagram Reel Player" width="100%" height="600" frameborder="0" scrolling="no" allowtransparency="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
-      modal.classList.add('open');
+    } else {
+      window.open(igUrl, '_blank', 'noopener,noreferrer');
     }
   });
 
